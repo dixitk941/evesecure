@@ -207,14 +207,16 @@ const Settings = () => {
         </Box>
       </Box>
 
-      <Button
-        variant="contained"
-        color="error"
-        onClick={handleSave}
-        style={{ backgroundColor: '#ff4d4d', color: 'white' }}
-      >
-        Save Settings
-      </Button>
+      <Box sx={{ paddingBottom: 8 }}> {/* Add padding to the bottom */}
+        <Button
+          variant="contained"
+          color="error"
+          onClick={handleSave}
+          sx={{ backgroundColor: '#ff4d4d', color: 'white' }}
+        >
+          Save Settings
+        </Button>
+      </Box>
     </Container>
   );
 };

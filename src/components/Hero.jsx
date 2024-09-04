@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Typography, Button, Box } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
 import { keyframes } from '@emotion/react';
@@ -12,9 +12,31 @@ const fillUnfill = keyframes`
 const Hero = () => {
   const [clicked, setClicked] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
+  const [location, setLocation] = useState(null);
+
+  useEffect(() => {
+    if (!location) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+        },
+        (error) => {
+          console.error('Error obtaining location', error);
+        },
+        { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+      );
+    }
+  }, [location]);
 
   const handleClick = () => {
     setClicked(true);
+    if (location) {
+      console.log('User location:', location);
+    }
+
     setTimeout(() => {
       setShowMessage(true);
       setTimeout(() => {

@@ -1,70 +1,89 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# **EveSecure - Smart India Hackathon Project 2024**
 
-In the project directory, you can run:
+Welcome to the repository for **Evesecure**, our innovative project developed for the **Smart India Hackathon (SIH) 2024**! 🎉
 
-### `npm start`
+## **About SIH 2024**
+The Smart India Hackathon (SIH) is a national initiative organized by the Ministry of Education’s Innovation Cell (MIC) in collaboration with AICTE. As the world's largest open innovation platform, SIH aims to harness the creative potential of students across India, encouraging them to develop innovative solutions to real-world problems posed by government bodies, industries, and various organizations.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## **Key Aspects of SIH 2024**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### **🚀 Problem Statements**
+SIH 2024 features 202 problem statements from diverse sectors such as healthcare, agriculture, education, and more. These challenges, presented by government ministries, public sector units (PSUs), and private companies, require participants to develop creative and feasible solutions that can make a real-world impact.
 
-### `npm test`
+### **👥 Participant Structure**
+Teams are composed of 5 members, including a team leader. Collaboration is encouraged among students from the same academic background, fostering a multidisciplinary approach to problem-solving.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### **💡 Innovation and Creativity**
+Participants are encouraged to think outside the box, leveraging cutting-edge technologies such as Artificial Intelligence (AI), Blockchain, and the Internet of Things (IoT) to push the boundaries of technological innovation.
 
-### `npm run build`
+### **🏛️ Industry and Government Collaboration**
+SIH 2024 offers a unique platform for students to interact with industry experts and government officials, gaining valuable insights into real-world challenges. This collaboration includes mentorship from industry professionals who guide participants throughout the hackathon, ensuring their solutions are practical and impactful.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### **🏆 Support and Recognition**
+Winning teams receive cash prizes, certificates, and opportunities for further development and implementation of their solutions. Additionally, avenues for mentorship and funding are provided to help bring the winning ideas to market.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### **🇮🇳 Nation-Building Focus**
+SIH 2024 contributes to nation-building by addressing critical challenges faced by the country. The solutions developed during the hackathon align with the government's vision of a digitally empowered India, aiming to improve various sectors and promote technological advancements.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# EveSecure: Women Protection App
 
-### `npm run eject`
+## Overview
+**EveSecure** is a comprehensive women protection app designed with cutting-edge technology to ensure safety and rapid assistance in times of need. Developed as part of **Smart India Hackathon (SIH) 2024**, EveSecure incorporates multiple real-time emergency features to enhance personal security and provide monitoring options for loved ones.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### **Technologies Used**
+- **Frontend**: React, Tailwind CSS
+- **Backend**: Firebase, Web3Forms
+- **APIs**: Google Forms (for surveys)
+- **Other Tools**: GitHub, Vercel
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Key Features of EveSecure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Olive Camera: Real-time Video Streaming**  
+   Stream live video directly from your phone’s camera to trusted contacts during emergencies. This feature ensures that you're always in sight, providing peace of mind.
 
-## Learn More
+2. **Live Mic: Instant Emergency Audio Transmission**  
+   Send real-time audio to your emergency contacts, giving them an immediate understanding of the situation.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. **Police Station Locator**  
+   Displays the nearest police stations on the map for quick assistance in case of an emergency, ensuring help is always within reach.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. **Voice-Activated SOS**  
+   Trigger an SOS alert using predefined voice commands. This allows you to request help even when you can’t manually use your phone.
 
-### Code Splitting
+5. **Parental Control**  
+   Allows guardians or trusted contacts to monitor your location and emergency status, providing an extra layer of security for your loved ones.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+### **Installation and Setup**
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repository/evesecure.git
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. Navigate to the project directory:
+   ```bash
+   cd evesecure
+   ```
 
-### Making a Progressive Web App
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+4. Run the app:
+   ```bash
+   npm start
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### **Contributors**
+- **Karan Dixit** - Team Leader, Frontend Developer
+- **Pratick** - Frontend Developer, Firebase Integration
+- **Dushyant** - Backend Developer
+- **Mayank** - QA & Testing
+- **Pratibha** - Documentation & Presentation
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### **License**
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

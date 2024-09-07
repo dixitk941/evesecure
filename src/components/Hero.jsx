@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Container, Typography, Button, Box } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
 import { keyframes } from '@emotion/react';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
 
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBCdGoLROIFmSxm2paKBPABzch0G1n7i-c",
   authDomain: "eve-f0dbd.firebaseapp.com",
@@ -18,6 +19,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// Animation for SOS button
 const fillUnfill = keyframes`
   0% { background-color: transparent; }
   50% { background-color: #ff0000; }
@@ -33,29 +35,32 @@ const Hero = () => {
     setClicked(true);
     setMessage('Capturing location...');
 
+    // Geolocation to capture user's location
     navigator.geolocation.getCurrentPosition(
       async (position) => {
+        const { latitude, longitude } = position.coords;
         setLocation({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
+          latitude: latitude,
+          longitude: longitude,
         });
         setMessage('Forwarding location to police and emergency contacts...');
         
         try {
-          // Add user's location to Firestore
+          // Save user's location to Firestore
           await addDoc(collection(db, 'sos_requests'), {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
+            latitude: latitude,
+            longitude: longitude,
             timestamp: new Date(),
           });
-          console.log('Location saved:', location);
+          console.log('Location saved:', { latitude, longitude });
 
-          // After successfully saving the location
+          // Show final message after saving location
           setTimeout(() => {
             setMessage('Help on the way');
-          }, 2000); // Delay for showing "Forwarding location..." message
+          }, 2000);
         } catch (e) {
           console.error('Error adding document: ', e);
+          setMessage('Failed to forward location');
         }
       },
       (error) => {

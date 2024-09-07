@@ -30,6 +30,7 @@ const Hero = () => {
   const [clicked, setClicked] = useState(false);
   const [message, setMessage] = useState('');
   const [location, setLocation] = useState(null);
+  const [locationLink, setLocationLink] = useState('');
 
   const handleClick = async () => {
     setClicked(true);
@@ -43,6 +44,11 @@ const Hero = () => {
           latitude: latitude,
           longitude: longitude,
         });
+
+        // Generate Google Maps link
+        const googleMapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
+        setLocationLink(googleMapsLink);
+
         setMessage('Forwarding location to police and emergency contacts...');
         
         try {
@@ -51,6 +57,7 @@ const Hero = () => {
             latitude: latitude,
             longitude: longitude,
             timestamp: new Date(),
+            mapLink: googleMapsLink,  // Store the Google Maps link in Firestore
           });
           console.log('Location saved:', { latitude, longitude });
 
@@ -139,6 +146,23 @@ const Hero = () => {
             }}
           >
             {message}
+          </Typography>
+        )}
+        {locationLink && (
+          <Typography
+            variant="h6"
+            component="a"
+            href={locationLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              marginTop: '20px',
+              color: '#00ff00',
+              textDecoration: 'none',
+              '&:hover': { textDecoration: 'underline' },
+            }}
+          >
+            View Location on Google Maps
           </Typography>
         )}
       </Container>

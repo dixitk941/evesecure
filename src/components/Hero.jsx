@@ -2,6 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { Container, Typography, Button, Box } from '@mui/material';
 import HelpIcon from '@mui/icons-material/Help';
 import { keyframes } from '@emotion/react';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { initializeApp } from 'firebase/app';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBCdGoLROIFmSxm2paKBPABzch0G1n7i-c",
+  authDomain: "eve-f0dbd.firebaseapp.com",
+  projectId: "eve-f0dbd",
+  storageBucket: "eve-f0dbd.appspot.com",
+  messagingSenderId: "14829769908",
+  appId: "1:14829769908:web:12be767cf593acb701b3e1"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const fillUnfill = keyframes`
   0% { background-color: transparent; }
@@ -11,38 +26,44 @@ const fillUnfill = keyframes`
 
 const Hero = () => {
   const [clicked, setClicked] = useState(false);
-  const [showMessage, setShowMessage] = useState(false);
+  const [message, setMessage] = useState('');
   const [location, setLocation] = useState(null);
 
-  useEffect(() => {
-    if (!location) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLocation({
+  const handleClick = async () => {
+    setClicked(true);
+    setMessage('Capturing location...');
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        setLocation({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+        setMessage('Forwarding location to police and emergency contacts...');
+        
+        try {
+          // Add user's location to Firestore
+          await addDoc(collection(db, 'sos_requests'), {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
+            timestamp: new Date(),
           });
-        },
-        (error) => {
-          console.error('Error obtaining location', error);
-        },
-        { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
-      );
-    }
-  }, [location]);
+          console.log('Location saved:', location);
 
-  const handleClick = () => {
-    setClicked(true);
-    if (location) {
-      console.log('User location:', location);
-    }
-
-    setTimeout(() => {
-      setShowMessage(true);
-      setTimeout(() => {
-        setShowMessage(false);
-      }, 15000);
-    }, 1000); // Adjust timing to match the animation duration
+          // After successfully saving the location
+          setTimeout(() => {
+            setMessage('Help on the way');
+          }, 2000); // Delay for showing "Forwarding location..." message
+        } catch (e) {
+          console.error('Error adding document: ', e);
+        }
+      },
+      (error) => {
+        console.error('Error obtaining location', error);
+        setMessage('Failed to capture location');
+      },
+      { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+    );
   };
 
   return (
@@ -99,7 +120,7 @@ const Hero = () => {
             SOS
           </Button>
         </Box>
-        {showMessage && (
+        {message && (
           <Typography
             variant="h4"
             component="p"
@@ -112,7 +133,7 @@ const Hero = () => {
               boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
             }}
           >
-            Help on the way
+            {message}
           </Typography>
         )}
       </Container>
